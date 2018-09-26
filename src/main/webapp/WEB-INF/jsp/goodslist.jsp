@@ -199,9 +199,10 @@
                   <thead>
                     <tr>
                       <th class="text-center" style="width: 100px;">序号</th>
-                      <th class="text-center">标题</th>
-                      <th class="text-center">主题</th>
-                      <th class="text-center">发布时间</th>
+                      <th class="text-center">产品名</th>
+                      <th class="text-center">类型</th>
+                      <th class="text-center">图片</th>
+                      <th class="text-center">描述·</th>
                       <th class="text-center" style="width: 75px;">操作</th>
                     </tr>
                   </thead>
@@ -209,12 +210,17 @@
                     <tr>
                       <td class="text-center">1</td>
                       <td class="text-center">
-                        <strong>大话西游</strong>
+                        <strong>new balance</strong>
                       </td>
                       <td class="text-center">
-                        <strong>小说</strong>
+                        <strong>鞋子</strong>
                       </td>
-                      <td class="text-center">2018-06-05</td>
+                      <td class="text-center">
+                        <img src="/static/img/new balance.jpg" width="400px" >
+                      </td>
+                      <td class="text-center">
+                        描述。。。。。。。。。。。。。。。。。。。。
+                      </td>
                       <td class="text-center">
                         <a href="javascript:void(0)" data-toggle="tooltip" title="删除" class="btn btn-effect-ripple btn-xs btn-danger">
                           <i class="fa fa-times"></i>
@@ -241,6 +247,25 @@
     <script src="/static/js/plugins.js"></script>
     <script src="/static/js/app.js"></script>
     <script src="/static/js/pages/uiTables.js"></script>
+    <%--<script>--%>
+        <%--var url = "/goods/listjson";--%>
+        <%--$.ajax({--%>
+            <%--type: "post",--%>
+            <%--url: url,--%>
+<%--//      data: "para="+para,  此处data可以为 a=1&b=2类型的字符串 或 json数据。--%>
+<%--//             data: {"para":1},--%>
+            <%--cache: false,--%>
+            <%--async : false,--%>
+            <%--dataType: "json",--%>
+            <%--success: function (data ,textStatus, jqXHR)--%>
+            <%--{--%>
+
+            <%--},--%>
+            <%--error:function (XMLHttpRequest, textStatus, errorThrown) {--%>
+                <%--alert("请求失败！");--%>
+            <%--}--%>
+        <%--});--%>
+    <%--</script>--%>
   </body>
 
 </html>
