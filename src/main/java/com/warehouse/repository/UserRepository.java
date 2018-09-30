@@ -7,9 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface UserRepository extends JpaRepository<User,Integer> {
+
     User findByUserName(String username);
 
     @Modifying
     @Query("update User set enabled = false where userName = :username")
     void disableUser(@Param("username") String username);
+
 }

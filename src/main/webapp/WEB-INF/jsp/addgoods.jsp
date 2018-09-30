@@ -188,7 +188,8 @@
               <!-- END Get Started Title -->
 
               <!-- Get Started Content -->
-              <form id="article" enctype="multipart/form-data" class="form-horizontal form-bordered" action="/goods/add">
+              <form id="article" enctype="multipart/form-data" class="form-horizontal form-bordered" action="/goods/add" method="post">
+                  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="example-text-input">商品名称</label>
                   <div class="col-md-6">
@@ -212,6 +213,12 @@
                       <label class="col-md-3 control-label" for="example-text-input">商品类型</label>
                       <div class="col-md-6">
                           <input type="text" id="example-text-input3" name="type" class="form-control" required="required" />
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-md-3 control-label" for="example-text-input">数目</label>
+                      <div class="col-md-6">
+                          <input type="text" id="example-text-input4" name="quantity" class="form-control" required="required" />
                       </div>
                   </div>
                 <div class="form-group form-actions">

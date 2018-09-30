@@ -36,7 +36,8 @@
     <!--配置厂商适配器-->
     <bean name="hibernateVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="generateDdl" value="false" />
-        <property name="database" value="HSQL"/>
+        <property name="database" value="MYSQL"/>
+        <property name="showSql" value="true"/>
     </bean>
 
     <!--配置数据源-->
@@ -75,4 +76,11 @@
         </aop:config>
 
     <!--整合springdata end-->
+
+    <!--配置文件上传多部分解析器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="maxUploadSize" value="-1"/>
+    </bean>
+
 </beans>

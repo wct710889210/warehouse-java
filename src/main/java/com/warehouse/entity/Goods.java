@@ -11,6 +11,7 @@ public class Goods {
     private String type;
     private String photo;
     private String description;
+    private Integer quantity;
 
     public int getId() {
         return id;
@@ -50,5 +51,13 @@ public class Goods {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

@@ -1,5 +1,6 @@
 package com.warehouse.config;
 
+import org.aspectj.weaver.ast.And;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -38,17 +39,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/user/*").access("hasRole('ADMIN')");
-
-        http
-                .formLogin()
-                    .loginPage("/login")
+                    .antMatchers("/login").permitAll()
+                    .antMatchers("/user/*").hasRole("ADMIN")
+                    .antMatchers("/static/**").permitAll()
+                    .anyRequest().authenticated()
                 .and()
-                .authorizeRequests()
-                    .antMatchers("/index").authenticated()
+                .formLogin()
+                        .loginPage("/login")
                 .and()
                 .rememberMe()
                     .tokenValiditySeconds(241960)
-                    .key("warehouseKey");
+                    .key("warehouseKey")
+                .and()
+                .csrf()
+                    .disable();
     }
 }
