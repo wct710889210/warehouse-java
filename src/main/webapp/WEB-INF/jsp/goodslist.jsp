@@ -247,25 +247,25 @@
     <script src="/static/js/plugins.js"></script>
     <script src="/static/js/app.js"></script>
     <script src="/static/js/pages/uiTables.js"></script>
-    <%--<script>--%>
-        <%--var url = "/goods/listjson";--%>
-        <%--$.ajax({--%>
-            <%--type: "post",--%>
-            <%--url: url,--%>
-<%--//      data: "para="+para,  此处data可以为 a=1&b=2类型的字符串 或 json数据。--%>
-<%--//             data: {"para":1},--%>
-            <%--cache: false,--%>
-            <%--async : false,--%>
-            <%--dataType: "json",--%>
-            <%--success: function (data ,textStatus, jqXHR)--%>
-            <%--{--%>
+    <script>
+        var url = "/goods/listjson?pageNum=1";
+        $.ajax({
+            type: "post",
+            url: url,
+//      data: "para="+para,  此处data可以为 a=1&b=2类型的字符串 或 json数据。
+//             data: {"para":1},
+            cache: false,
+            async : false,
+            dataType: "json",
+            success: function (data ,textStatus, jqXHR)
+            {
 
-            <%--},--%>
-            <%--error:function (XMLHttpRequest, textStatus, errorThrown) {--%>
-                <%--alert("请求失败！");--%>
-            <%--}--%>
-        <%--});--%>
-    <%--</script>--%>
+            },
+            error:function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("请求失败！");
+            }
+        });
+    </script>
   </body>
 
 </html>

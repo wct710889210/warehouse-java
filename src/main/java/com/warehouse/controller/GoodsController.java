@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
@@ -111,26 +110,39 @@ public class GoodsController {
         return page;
     }
 
-    //TODO 修改
     @RequestMapping("generateReport")
     public void generateReport(HttpServletRequest request, HttpServletResponse response){
 
+        //获取所有商品
+        List<Goods> goodsList = goodsRepository.findAll();
         OutputStream outputStream = null;
 
         //创建Excel表
+        int rowNum = 0;
         HSSFWorkbook  workbook = new HSSFWorkbook();
         HSSFSheet sheet =workbook.createSheet("sheet1");
-        HSSFRow row = sheet.createRow(0);
+
+        //TODO 设置标题栏的样式
+        HSSFRow row = sheet.createRow(rowNum++);
         row.createCell(0).setCellValue("id");
         row.createCell(1).setCellValue("商品名称");
         row.createCell(2).setCellValue("类型");
         row.createCell(3).setCellValue("描述");
         row.createCell(4).setCellValue("数量");
         row.setHeightInPoints(30); // 设置行的高度
+
+        for(Goods goods:goodsList){
+            HSSFRow tmpRow = sheet.createRow(rowNum++);
+            tmpRow.createCell(0).setCellValue(goods.getId());
+            tmpRow.createCell(1).setCellValue(goods.getName());
+            tmpRow.createCell(2).setCellValue(goods.getType());
+            tmpRow.createCell(3).setCellValue(goods.getDescription());
+            tmpRow.createCell(4).setCellValue(goods.getQuantity());
+        }
+
         workbook.setActiveSheet(0);
 
-        response.setContentType("application/force-download");
-        response.setHeader("Content-Disposition","attachment/filename=报表");
+        //传输生成的Exel
         try {
             outputStream = response.getOutputStream();
             response.reset();
@@ -150,8 +162,6 @@ public class GoodsController {
                 }
             }
         }
-
-
     }
 
     public String generateRandomFilename() {
