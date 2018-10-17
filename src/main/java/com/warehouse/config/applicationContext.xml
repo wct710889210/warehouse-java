@@ -83,4 +83,8 @@
         <property name="maxUploadSize" value="-1"/>
     </bean>
 
+    <!--切面 start-->
+        <aop:aspectj-autoproxy/>
+        <bean class="com.warehouse.aspect.Record"/>
+    <!--切面 end-->
 </beans>
